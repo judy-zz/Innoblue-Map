@@ -25,6 +25,7 @@ GEM
       sass (>= 3.1)
     haml (3.1.4)
     multi_json (1.0.4)
+    rack (1.4.0)
     sass (3.1.12)
     thor (0.14.6)
 
@@ -37,4 +38,5 @@ DEPENDENCIES
   guard-coffeescript
   guard-haml
   guard-sass
+  rack
   sass
