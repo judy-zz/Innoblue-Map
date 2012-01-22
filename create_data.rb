@@ -39,6 +39,6 @@ end
 nodes, links = parse_tree(tree, 32)
 links.shift
 
-File.open("hackermap.json", "w") do |f|
+File.open("public/hackermap.json", "w") do |f|
   f.puts ({"nodes" => nodes, "links" => links}.to_json)
 end

@@ -2,9 +2,9 @@
 # More info at https://github.com/guard/guard#readme
 
 guard 'haml' do
-  watch("index.html.haml")
+  watch("public/index.html.haml")
 end
 
-guard 'coffeescript', :input => 'coffee', :output => 'js'
+guard 'coffeescript', :input => 'coffee', :output => 'public/js'
 
-guard 'sass', :input => 'sass', :output => 'css'
+guard 'sass', :input => 'sass', :output => 'public/css'
