@@ -8,3 +8,5 @@ gem 'sass'
 gem 'coffee-filter'
 gem 'guard-coffeescript'
 gem 'guard-sass'
+
+gem 'rack'
