@@ -6,7 +6,7 @@
     h = 700;
     fill = d3.scale.category10();
     vis = d3.select("#chart").append("svg").attr("width", w).attr("height", h);
-    return d3.json("hackermap.json", function(json) {
+    return d3.json("/hackermap.json", function(json) {
       var force, label, link, node;
       force = d3.layout.force().charge(-500).linkDistance(50).nodes(json.nodes).links(json.links).size([w, h]).start();
       link = vis.selectAll("line.link").data(json.links).enter().append("line").attr("class", "link").style("stroke-width", function(d) {
