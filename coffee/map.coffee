@@ -1,9 +1,9 @@
 $(document).ready () ->
 
   # The force-directed map I'll do later.
-  w = 960
-  h = 500
-  fill = d3.scale.category20()
+  w = 1400
+  h = 700
+  fill = d3.scale.category10()
 
   vis = d3.select("#chart").append("svg")
     .attr("width", w)

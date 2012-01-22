@@ -2,9 +2,9 @@
 
   $(document).ready(function() {
     var fill, h, vis, w;
-    w = 960;
-    h = 500;
-    fill = d3.scale.category20();
+    w = 1400;
+    h = 700;
+    fill = d3.scale.category10();
     vis = d3.select("#chart").append("svg").attr("width", w).attr("height", h);
     return d3.json("hackermap.json", function(json) {
       var force, label, link, node;
