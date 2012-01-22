@@ -1,16 +1,18 @@
 $(document).ready () ->
+
+  # The force-directed map I'll do later.
   w = 960
   h = 500
   fill = d3.scale.category20()
 
   vis = d3.select("#chart").append("svg")
-      .attr("width", w)
-      .attr("height", h)
+    .attr("width", w)
+    .attr("height", h)
 
   d3.json "hackermap.json", (json) ->
     force = d3.layout.force()
-      .charge(-120)
-      .linkDistance(30)
+      .charge(-500)
+      .linkDistance(50)
       .nodes(json.nodes)
       .links(json.links)
       .size([w, h])
@@ -26,9 +28,10 @@ $(document).ready () ->
       .attr("x2", (d) -> d.target.x)
       .attr("y2", (d) -> d.target.y)
 
-    node = vis.selectAll("circle.node")
-      .data(json.nodes)
-      .enter().append("circle")
+    node = vis.selectAll("circle")
+      .data(json.nodes, (d) -> d.name)
+      .enter()
+      .append("circle")
       .attr("class", "node")
       .attr("cx", (d) -> d.x )
       .attr("cy", (d) -> d.y )
@@ -36,8 +39,15 @@ $(document).ready () ->
       .style("fill", (d) -> fill(d.group) )
       .call(force.drag)
 
-    node.append("title")
+    label = vis.selectAll("text")
+      .data(json.nodes, (d) -> d.name)
+      .enter()
+      .insert("text")
       .text((d) -> d.name )
+      .attr("x", (d) -> d.x )
+      .attr("y", (d) -> d.y - 5 )
+      .attr("text-anchor", "middle")
+      .call(force.drag)
 
     force.on "tick", ->
       link.attr("x1", (d) -> d.source.x )
@@ -47,3 +57,6 @@ $(document).ready () ->
 
       node.attr("cx", (d) -> d.x )
         .attr("cy", (d) -> d.y )
+
+      label.attr("x", (d) -> d.x )
+        .attr("y", (d) -> d.y )
