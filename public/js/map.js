@@ -26,9 +26,7 @@
         return d.x;
       }).attr("cy", function(d) {
         return d.y;
-      }).attr("r", 5).style("fill", function(d) {
-        return fill(d.group);
-      }).call(force.drag);
+      }).attr("r", 5).style("fill", "#333").call(force.drag);
       label = vis.selectAll("text").data(json.nodes, function(d) {
         return d.name;
       }).enter().insert("text").text(function(d) {
@@ -36,8 +34,10 @@
       }).attr("x", function(d) {
         return d.x;
       }).attr("y", function(d) {
-        return d.y - 5;
-      }).attr("text-anchor", "middle").call(force.drag);
+        return d.y;
+      }).attr("text-anchor", "middle").style("fill", function(d) {
+        return fill(d.group);
+      }).call(force.drag);
       return force.on("tick", function() {
         link.attr("x1", function(d) {
           return d.source.x;

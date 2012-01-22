@@ -36,7 +36,7 @@ $(document).ready () ->
       .attr("cx", (d) -> d.x )
       .attr("cy", (d) -> d.y )
       .attr("r", 5)
-      .style("fill", (d) -> fill(d.group) )
+      .style("fill", "#333" )
       .call(force.drag)
 
     label = vis.selectAll("text")
@@ -45,8 +45,9 @@ $(document).ready () ->
       .insert("text")
       .text((d) -> d.name )
       .attr("x", (d) -> d.x )
-      .attr("y", (d) -> d.y - 5 )
+      .attr("y", (d) -> d.y )
       .attr("text-anchor", "middle")
+      .style("fill", (d) -> fill(d.group) )
       .call(force.drag)
 
     force.on "tick", ->
