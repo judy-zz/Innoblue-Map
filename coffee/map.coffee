@@ -9,7 +9,7 @@ $(document).ready () ->
     .attr("width", w)
     .attr("height", h)
 
-  d3.json "/hackermap.json", (json) ->
+  d3.json "/js/hackermap.json", (json) ->
     force = d3.layout.force()
       .charge(-500)
       .linkDistance(50)
