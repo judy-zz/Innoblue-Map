@@ -1,11 +1,12 @@
+#! /usr/bin/env ruby
 require "YAML"
-require "uuidtools"
-require "pp"
 require "json"
+
 tree = YAML.parse(File.open("hackermap.yml")).to_ruby
 
 $i = -1
 $group = 0
+starting_group_level = 32  # Will be divided in half for each branch. Denotes line thickness.
 
 def parse_tree(tree, weight)
   nodes = []
@@ -36,7 +37,7 @@ def parse_tree(tree, weight)
   return nodes, links
 end
 
-nodes, links = parse_tree(tree, 32)
+nodes, links = parse_tree(tree, starting_group_level)
 links.shift
 
 File.open("public/hackermap.json", "w") do |f|
